@@ -58,12 +58,16 @@ class _LoginFormState extends State<LoginForm> {
           const SizedBox(
             height: 16,
           ),
-          RaisedButton(
-              color: Theme.of(context).primaryColor,
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(16),
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(8.0)),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onPrimary: Colors.white,
+                shadowColor: Colors.greenAccent,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0)),
+                minimumSize: Size(100, 40), //////// HERE
+              ),
               child: widget.state is AuthenticationLoading
                   ? CircularProgressIndicator(
                       backgroundColor:

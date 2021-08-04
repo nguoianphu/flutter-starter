@@ -58,12 +58,40 @@ class _SignUpFormState extends State<SignUpForm> {
           const SizedBox(
             height: 16,
           ),
-          RaisedButton(
-              color: Theme.of(context).primaryColor,
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(16),
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(8.0)),
+          // RaisedButton(
+          //     color: Theme.of(context).primaryColor,
+          //     textColor: Colors.white,
+          //     padding: const EdgeInsets.all(16),
+          //     shape: new RoundedRectangleBorder(
+          //         borderRadius: new BorderRadius.circular(8.0)),
+          //     child: widget.state is AuthenticationLoading
+          //         ? CircularProgressIndicator(
+          //             backgroundColor:
+          //                 Theme.of(context).textTheme.bodyText1.color,
+          //           )
+          //         : Text(
+          //             'Sign Up',
+          //             style: Theme.of(context).textTheme.bodyText1,
+          //           ),
+          //     onPressed: () {
+          //       if (_key.currentState.validate()) {
+          //         widget.authenticationBloc.add(UserSignUp(
+          //             email: _emailController.text,
+          //             password: _passwordController.text));
+          //       } else {
+          //         print('Form not validated');
+          //       }
+          //     }),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onPrimary: Colors.white,
+                shadowColor: Colors.greenAccent,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0)),
+                minimumSize: Size(100, 40), //////// HERE
+              ),
               child: widget.state is AuthenticationLoading
                   ? CircularProgressIndicator(
                       backgroundColor:
@@ -81,7 +109,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 } else {
                   print('Form not validated');
                 }
-              })
+              }),
         ],
       ),
     );
