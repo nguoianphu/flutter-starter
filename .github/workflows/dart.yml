@@ -28,7 +28,8 @@ jobs:
         java-version: '12.x'
 
     - name: build APK weather-app
-      working-directory: flutter-starter/examples/weather-app/app
+      working-directory: ./examples/weather-app/app
+      shell: bash
       run: |
         rm -rf build || true
         rm -rf .idea || true
@@ -41,4 +42,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: apk_weather-app
-        path: flutter-starter/examples/weather-app/app/build/app/outputs/apk/release/*.apk
+        path: ./examples/weather-app/app/build/app/outputs/apk/release/*.apk
