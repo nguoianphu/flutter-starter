@@ -27,6 +27,9 @@ jobs:
       with:
         java-version: '12.x'
 
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+
     - name: build APK weather-app
       working-directory: ./examples/weather-app/app
       shell: bash
