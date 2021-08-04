@@ -1,0 +1,44 @@
+name: Dart CI
+
+on: push
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
+
+env:
+  flutter_channel: 'stable' # or: 'dev' or 'beta'
+  flutter_version: '2.2.2'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: ${{ env.flutter_channel }}
+        flutter-version: ${{ env.flutter_version }}
+
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'
+
+    - name: build APK weather-app
+      working-directory: flutter-starter/examples/weather-app/app
+      run: |
+        rm -rf build || true
+        rm -rf .idea || true
+        rm -rf *.lock || true
+        flutter clean
+        flutter pub get
+        flutter build apk --split-per-abi
+
+    - name: artifact weather-app
+      uses: actions/upload-artifact@v1
+      with:
+        name: apk_weather-app
+        path: flutter-starter/examples/weather-app/app/build/app/outputs/apk/release/*.apk
