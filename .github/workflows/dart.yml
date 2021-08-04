@@ -40,6 +40,9 @@ jobs:
         flutter clean
         flutter pub get
         flutter build apk --split-per-abi
+        pwd
+        ls -la build/app/outputs/flutter-apk/
+        ls -la build/app/outputs/apk/release/
 
     - name: artifact weather-app
       uses: actions/upload-artifact@v1
